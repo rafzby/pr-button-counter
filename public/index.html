@@ -26,11 +26,9 @@ messagingSenderId: "551783930210"
 firebase.initializeApp(config);
 
 var counter = document.getElementById('counter');
-var counterRef = firebase.database().ref('/counter');
-
-counterRef.on('value', function(snapshot) {
+var counterRef = firebase.database().ref('/counter').on('value',function(snapshot) {
   counter.innerText = snapshot.val();
-});
+})
 </script>
 </body>
 </html>
