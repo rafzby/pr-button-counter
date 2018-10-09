@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PR Button - Counter</title>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
+
+</head>
+<body>
+<h1>Counter: <span id="counter">0</span></h1>
+
+<script>
+// Initialize Firebase
+var config = {
+apiKey: "AIzaSyBqQ9J3KS8VEG8K4q20O-X9A9qvtgjiIYw",
+authDomain: "pr-button-counter.firebaseapp.com",
+databaseURL: "https://pr-button-counter.firebaseio.com",
+projectId: "pr-button-counter",
+storageBucket: "pr-button-counter.appspot.com",
+messagingSenderId: "551783930210"
+};
+
+firebase.initializeApp(config);
+
+var counter = document.getElementById('counter');
+var counterRef = firebase.database().ref('/counter');
+
+counterRef.on('value', function(snapshot) {
+  counter.innerText = snapshot.val();
+});
+</script>
+</body>
+</html>
